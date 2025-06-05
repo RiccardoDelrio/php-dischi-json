@@ -1,5 +1,9 @@
 <?php
-include_once("./server.php");
+$json_text = file_get_contents("./dischi.json");
+$dischi = json_decode($json_text, true);
+if (!is_array($dischi)) {
+    $dischi = [];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +58,7 @@ include_once("./server.php");
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <form action="" method="post" class="mt-4 p-4">
+                    <form action="./server.php" method="post" class="mt-4 p-4">
                         <div class="mb-3">
                             <label for="titolo" class="form-label">Inserisci il titolo del disco</label>
                             <input type="text" class="form-control" id="titolo" name="titolo">
